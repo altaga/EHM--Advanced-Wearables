@@ -1,0 +1,36 @@
+menu "nrf (C:\Users\VAI\ncs\v1.5.1\nrf)"
+osource "C:/Users/VAI/ncs/v1.5.1/nrf/Kconfig.nrf"
+config ZEPHYR_NRF_MODULE
+	bool
+	default y
+endmenu
+menu "mcuboot (C:\Users\VAI\ncs\v1.5.1\bootloader\mcuboot)"
+osource "$(ZEPHYR_MCUBOOT_KCONFIG)"
+config ZEPHYR_MCUBOOT_MODULE
+	bool
+	default y
+endmenu
+menu "nrfxlib (C:\Users\VAI\ncs\v1.5.1\nrfxlib)"
+osource "C:/Users/VAI/ncs/v1.5.1/nrfxlib/Kconfig.nrfxlib"
+config ZEPHYR_NRFXLIB_MODULE
+	bool
+	default y
+endmenu
+menu "hal_nordic (C:\Users\VAI\ncs\v1.5.1\modules\hal\nordic)"
+osource "$(ZEPHYR_HAL_NORDIC_KCONFIG)"
+config ZEPHYR_HAL_NORDIC_MODULE
+	bool
+	default y
+endmenu
+menu "cddl-gen (C:\Users\VAI\ncs\v1.5.1\modules\lib\cddl-gen)"
+osource "$(ZEPHYR_CDDL_GEN_KCONFIG)"
+config ZEPHYR_CDDL_GEN_MODULE
+	bool
+	default y
+endmenu
+menu "connectedhomeip (C:\Users\VAI\ncs\v1.5.1\modules\lib\connectedhomeip)"
+osource "C:/Users/VAI/ncs/v1.5.1/modules/lib/connectedhomeip/config/nrfconnect/chip-module/Kconfig"
+config ZEPHYR_CONNECTEDHOMEIP_MODULE
+	bool
+	default y
+endmenu

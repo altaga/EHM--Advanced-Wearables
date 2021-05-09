@@ -1,0 +1,3 @@
+"BOARD_ROOT":"C:/Users/VAI/ncs/v1.5.1/nrf"
+"DTS_ROOT":"C:/Users/VAI/ncs/v1.5.1/nrf"
+"MODULE_EXT_ROOT":"C:/Users/VAI/ncs/v1.5.1/nrf"

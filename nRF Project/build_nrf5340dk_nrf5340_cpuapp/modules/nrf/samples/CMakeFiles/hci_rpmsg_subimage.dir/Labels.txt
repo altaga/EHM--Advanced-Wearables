@@ -1,0 +1,13 @@
+# Target labels
+ hci_rpmsg_subimage
+# Source files and their labels
+C:/Users/VAI/ncs/v1.5.1/zephyr/samples/bluetooth/st_ble_sensor/build_nrf5340dk_nrf5340_cpuapp/modules/nrf/samples/CMakeFiles/hci_rpmsg_subimage
+C:/Users/VAI/ncs/v1.5.1/zephyr/samples/bluetooth/st_ble_sensor/build_nrf5340dk_nrf5340_cpuapp/modules/nrf/samples/CMakeFiles/hci_rpmsg_subimage.rule
+C:/Users/VAI/ncs/v1.5.1/zephyr/samples/bluetooth/st_ble_sensor/build_nrf5340dk_nrf5340_cpuapp/modules/nrf/samples/CMakeFiles/hci_rpmsg_subimage-complete.rule
+C:/Users/VAI/ncs/v1.5.1/zephyr/samples/bluetooth/st_ble_sensor/build_nrf5340dk_nrf5340_cpuapp/modules/nrf/samples/hci_rpmsg_subimage-prefix/src/hci_rpmsg_subimage-stamp/hci_rpmsg_subimage-install.rule
+C:/Users/VAI/ncs/v1.5.1/zephyr/samples/bluetooth/st_ble_sensor/build_nrf5340dk_nrf5340_cpuapp/modules/nrf/samples/hci_rpmsg_subimage-prefix/src/hci_rpmsg_subimage-stamp/hci_rpmsg_subimage-mkdir.rule
+C:/Users/VAI/ncs/v1.5.1/zephyr/samples/bluetooth/st_ble_sensor/build_nrf5340dk_nrf5340_cpuapp/modules/nrf/samples/hci_rpmsg_subimage-prefix/src/hci_rpmsg_subimage-stamp/hci_rpmsg_subimage-download.rule
+C:/Users/VAI/ncs/v1.5.1/zephyr/samples/bluetooth/st_ble_sensor/build_nrf5340dk_nrf5340_cpuapp/modules/nrf/samples/hci_rpmsg_subimage-prefix/src/hci_rpmsg_subimage-stamp/hci_rpmsg_subimage-update.rule
+C:/Users/VAI/ncs/v1.5.1/zephyr/samples/bluetooth/st_ble_sensor/build_nrf5340dk_nrf5340_cpuapp/modules/nrf/samples/hci_rpmsg_subimage-prefix/src/hci_rpmsg_subimage-stamp/hci_rpmsg_subimage-patch.rule
+C:/Users/VAI/ncs/v1.5.1/zephyr/samples/bluetooth/st_ble_sensor/build_nrf5340dk_nrf5340_cpuapp/modules/nrf/samples/hci_rpmsg_subimage-prefix/src/hci_rpmsg_subimage-stamp/hci_rpmsg_subimage-configure.rule
+C:/Users/VAI/ncs/v1.5.1/zephyr/samples/bluetooth/st_ble_sensor/build_nrf5340dk_nrf5340_cpuapp/modules/nrf/samples/hci_rpmsg_subimage-prefix/src/hci_rpmsg_subimage-stamp/hci_rpmsg_subimage-build.rule
