@@ -312,9 +312,16 @@ Video: Click on the image
 
 # The Final Product:
 
-Product:
+Vital Signs Station:
 
-<img src="pendign" width="800">
+<img src="./IMG/dev1o.png" width="600">
+<img src="./IMG/dev1.png" width="600">
+
+ECG Station:
+
+<img src="./IMG/dev2o.png" width="600">
+<img src="./IMG/dev2oo.png" width="600">
+<img src="./IMG/dev2.png" width="600">
 
 ### Epic DEMO:
 
