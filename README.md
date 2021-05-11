@@ -338,4 +338,3 @@ Video: Click on the image
 * World health Organization
 * www.mdedge.com/ccjm/article/203527/cardiology/ambulatory-ecg-monitoring-age-smartphones
 * en.wikipedia.org/wiki/Cardiovascular_disease
-
