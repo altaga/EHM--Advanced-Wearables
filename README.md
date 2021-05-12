@@ -16,6 +16,7 @@
 - [nRF5340 Setup:](#nrf5340-setup)
     - [Read Sensor Data:](#read-sensor-data)
     - [**Ble**:](#ble)
+- [Power Consumption:](#power-consumption)
 - [EKG Device:](#ekg-device)
   - [**AD8232**:](#ad8232)
   - [**RPI**:](#rpi)
@@ -212,6 +213,13 @@ Para ver la transmision mas claramente grabe un video de como los datos llegan e
 
 Video: Click on the image
 [![DEMO](./IMG/devvideo.png)](https://youtu.be/Uwuh8ozcnd0)
+
+# Power Consumption:
+
+Como podemos ver nuestro device tiene un consumo de 50mAh.
+
+<img src="./IMG/current.png" width="1000">
+<img src="./IMG/currentmes.jpg" width="1000">
 
 # EKG Device:
 
