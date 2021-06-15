@@ -136,23 +136,25 @@ This is the connection diagram of the system:
 
 # Project:
 
-El proyecto esta dividido en dos grandes ramas, la utilicacion de la nRF5340 como monitor de signos vitales y el PPKII como ECG, explicare a detalle ambos, empezando por el nRF5340.
+The project is divided into two main branches, the use of the nRF5340 as a vital signs monitor and the PPKII as an ECG, I will explain both in detail, starting with the nRF5340.
 
 # nRF5340 Setup:
 
-El projecto completo estara en la carpeta "nRF Project"
+The complete project will be in the folder "nRF Project":
 
-Como indicaba la documentacion oficial, se utilizo para la capa de Network del deispositivo el proyecto hci_rpmsg desde el Segger Embedded Studio v1.5.1. 
+
+
+As the official documentation indicated, the hci_rpmsg project was used for the device's Network layer from Segger Embedded Studio v1.5.1.
 
 <img src="./IMG/version.png" width="1000">
 
-La aplicacion para la capa de CORE esta en la capeta nRF Project.
+The application for the CORE layer is in the nRF Project folder.
 
 <hr>
 
 ### Read Sensor Data:
 
-Para hacer la lectura de los sensores se utilizo un Atmega328P como driver para leer los sensores facilmente y mandar la informacion a la nRF5340. como muestra el esquema [scheme](#nrf5340). Se utilizo un protocolo de transmision propio inspirado en la comunicacion de las LCD Displays.
+To read the sensors, an Atmega328P was used as a driver to read the sensors easily and send the information to the nRF5340. as shown by the [scheme] (# nrf5340). A proprietary transmission protocol was used, inspired by the communication of LCD Displays. 
 
 | Micro PIN        |       Board PIN  |
 |------------------|------------------|
@@ -160,7 +162,7 @@ Para hacer la lectura de los sensores se utilizo un Atmega328P como driver para 
 | D3               | P1.05   (input)  |
 | D4               | P1.06   (input)  |
 
-Los datos mandados desde el microcontrolador a la board son de 16 bits, siendo los primeros 8 bits el dato a mandar y los otros 8 el numero de sensor.
+The data sent from the microcontroller to the board is at 16 bits, the first 8 bits being the data to send and the other 8 the sensor number.
 
     static unsigned int temp = 0;
     temp = readTriWire();
@@ -190,13 +192,13 @@ Los datos mandados desde el microcontrolador a la board son de 16 bits, siendo l
         printk("%d \n",(temp & 0x00FF));
     }
 
-Cada dato recibido se inserta en una variable memory de 32 bits, una vez recibimos los 4 valores, los mandamos a la notify de BLE.
+Each data received is inserted into a 32-bit memory variable, once we receive the 4 values, we send them to the BLE notify.
 
 <hr>
 
 ### **Ble**:
 
-Para la notificacion de BLE se esta mandando una variable de 32 bits, con un dato codificado cada 8 bits.
+For the BLE notification, a 32-bit variable is being sent, with a data encoded every 8 bits.
 
 | Byte             |       Sensor     |
 |------------------|------------------|
@@ -205,18 +207,18 @@ Para la notificacion de BLE se esta mandando una variable de 32 bits, con un dat
 | 3                | Temperature      |
 | 4                | NONE             |
 
-Aqui un ejemplo de como llega a nRF connect la informacion.
+Here is an example of how the information gets to nRF connect.
 
 <img src="./IMG/data.png" width="1000">
 
-Para ver la transmision mas claramente grabe un video de como los datos llegan en tiempo real a la cloud y a la plataforma que realice en Node-RED (mas detalles en [Node RED UI](#node-red-ui)).
+To see the transmission more clearly, record a video of how the data arrives in real time to the cloud and to the platform that you carry out in Node-RED (more details at [Node RED UI](#node-red-ui)).
 
 Video: Click on the image
 [![DEMO](./IMG/devvideo.png)](https://youtu.be/Uwuh8ozcnd0)
 
 # Power Consumption:
 
-Como podemos ver nuestro device tiene un consumo de 50mAh.
+As we can see, our device has a consumption of 50mAh.
 
 <img src="./IMG/current.png" width="1000">
 <img src="./IMG/currentmes.jpg" width="1000">
@@ -225,15 +227,15 @@ Como podemos ver nuestro device tiene un consumo de 50mAh.
 
 ## **AD8232**:
 
-La idea principal del proyecto, originalmente fue el hacer nmediciones de un EKG a travez de el power profiler kit ii. El circuito utilizado para medir el ECG es un modulo AD8232, sin embargo este tiene como output un voltaje, no una corriente.
+The main idea of the project was originally to take EKG measurements through the power profiler kit ii. The circuit used to measure the ECG is an AD8232 module, however it outputs a voltage, not a current.
 
 <img src="./IMG/adb.png" width="1000">
 
-Entonces para nosotros poder convertir este circuito en un circuito para medir corriente, debemos incluir una resistencia y poner el PPKII en serie con la resistencia para cerrar el circuito.
+So for us to be able to turn this circuit into a current measurement circuit, we must include a resistor and put the PPKII in series with the resistor to close the circuit.
 
 <img src="./IMG/rest.png" width="1000">
 
-Con este circuito ahora si seremos capaces de medir la corriente que pasara a atravez de la resistencia, la cual corresponde con la onda del ECG. Aqui un ejemplo en video de la captura de un ECG con el PPKII.
+With this circuit we will now be able to measure the current that will pass through the resistance, which corresponds to the ECG wave. Here is a video example of an ECG capture with the PPKII.
 
 [![DEMO](./IMG/screen.png)](https://youtu.be/18YaSTLJCgA)
 
@@ -241,38 +243,38 @@ Con este circuito ahora si seremos capaces de medir la corriente que pasara a at
 
 ## **RPI**:
 
-Sin embargo tenerlo conectado a una PC para hacer mediciones me parecio absurdo, asi que para utilizar el PPKII utilice una Raspberry Pi Zero.
+However, having it connected to a PC to make measurements seemed absurd to us, so to use the PPKII we used a Raspberry Pi Zero.
 
 Libreria utilizada:
 https://github.com/IRNAS/ppk2-api-python
 
-Al final el circuito utilizado para hacer las mediciones de EKG con la raspberry es este.
+In the end the circuit used to make the EKG measurements with the raspberry is this:
 
 <img src="./IMG/ecg.png" width="1000">
 
 ## **MQTT RPI Server**:
 
-Todo el codigo implementado para realizar las mediciones y mandarlas a Node-RED esta en la carpeta RPI Software.
+All the code implemented to perform the measurements and send them to Node-RED is in the RPI Software folder at our Github that you can find below.
 
-Sin embargo hay que mencionar que todos los datos que llegan al Node-RED se mandan a travez de MQTT, este server de MQTT esta instalado en la Raspberry a travez de Mosquitto.
+However, it must be mentioned that all the data that reaches Node-RED is sent through MQTT, this MQTT server is installed on the Raspberry through Mosquitto.
 
 https://mosquitto.org/
 
-Recomendamos que se utilice un MQTT directamente instalado en un proveedor de servicios como AWS para mayor seguridad.
+We recommend using an MQTT installed directly from a service provider such as AWS for added security.
 
 # Node RED UI:
 
-Para el deploy de este sistema decidi utilizar Node-RED, debido a su faciilidad de uso y capacidad de generar dashboards me parecio lo mas adecuado.
+For the deployment of this system we decided to use Node-RED, due to its ease of use and ability to generate dashboards it seemed the most appropriate.
 
 <img src="./IMG/node-red.png" width="1000">
 
 ## **Setup nRF MQTT**:
 
-Por fortuna para mi, nRF Cloud cuenta con su propio servicio de mqtt, como dice la documentacion oficial.
+Fortunately for us, nRF Cloud has its own mqtt service, as the official documentation says.
 
 https://nrfcloud.com/#/docs/guides/mqtt
 
-Siguiendo esa guia pude configurar las credenciales de el servidor de MQTT, el servicio esta montado en AWS, por lo tanto requerimos lo siguiente para poder realizar exitosamente la conexion.
+Following that guide I was able to configure the credentials of the MQTT server, the service is mounted on AWS, therefore we require the following to be able to successfully make the connection.
 
 * Endpoint.
 * Gateway Topic.
@@ -281,39 +283,39 @@ Siguiendo esa guia pude configurar las credenciales de el servidor de MQTT, el s
 * clientCert
 * privateKey
 
-Para configurar estos datos en Node-RED deberemos entrar al nodo de MQTT.
+To configure this data in Node-RED we must enter the MQTT node.
 
 <img src="./IMG/mqtt.png" width="1000">
 
-Al hacer clic en el simbolo de lapiz podremos configurar todo el sevicio de MQTT.
+By clicking on the pencil symbol we can configure all the MQTT service.
 
 <img src="./IMG/mqtt-2.png" width="1000">
 
-Una ves esta todo configurado, podremos recibir todos los datos que mande la nRF5340 a nRF Cloud, aqui un ejemplo de como estamos recibiendo los 4 valores en la plataforma de Node-RED.
+Once everything is configured, we can receive all the data sent by the nRF5340 to nRF Cloud, here is an example of how we are receiving the 4 values in the Node-RED platform.
 
 <img src="./IMG/resc.png" width="1000">
 
-Para filtrar cada valor a su grafica correspondiente se utilizaron las siguientes funciones.
+To filter each value to its corresponding graph, the following functions were used.
 
     let p=JSON.parse(msg.payload);
     p = p["message"]["event"]["characteristic"]
     p = { payload: p["value"][0]}; 
     return p;
 
-Asi obtendremos graficas con los valores de cada sensor.
+Thus we will obtain graphs with the values of each sensor.
 
-En el video ya mostrado anteriormente veremos las graficas recibiendo los datos en tiempo real.
+In the video already shown above we will see the graphs receiving the data in real time.
 
 Video: Click on the image
 [![DEMO](./IMG/devvideo.png)](https://youtu.be/Uwuh8ozcnd0)
 
 ## **Setup PPKII MQTT**:
 
-En el caso de Raspberry, es mucho mas sencillo el setup, ya que solo tendremos que poner la IP de la raspberry como server y el topic "/station/1/hr".
+In the case of Raspberry, the setup is much easier, since we will only have to put the IP of the raspberry as server and the topic "/station/1/hr".
 
 <img src="./IMG/mqttrasp.png" width="1000">
 
-Aqui un video de la plataforma recibiendo los datos del PPKII.
+Here is a video of the platform receiving the data from the PPKII.
 
 Video: Click on the image
 [![Car](./IMG/ekgg.png)](https://youtu.be/_6tdXgfrusw)
@@ -334,7 +336,7 @@ ECG Station:
 ### Epic DEMO:
 
 Video: Click on the image
-[![DEMO](./IMG/logo.svg)](pending)
+[![DEMO](./IMG/logo.svg)](https://www.youtube.com/watch?v=v69VNOpI2DY)
 
 # Commentary:
 
