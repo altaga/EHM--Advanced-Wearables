@@ -67,7 +67,7 @@ unsigned int memory = 0;
                 TriWire protocol explanation.
                 https://github.com/altaga/EHM--Advanced-Wearables#read-sensor-data
             */
-           // Reding 3 Sensors Data Enconding in 32 bits (Check github for more information)
+           // Reding 3 Sensors Data Enconding.
             if (temp >> 8 == 1)
             {
                 memory = temp & 0x00FF;             // SPO2 Data
@@ -136,7 +136,7 @@ unsigned int readTriWire(void)
     }
     if (printFlag)
     {
-        // Return Sensors values encoding in recv (32 bits)
+        // Return Sensor number and value encoding in recv (16 bits)
         return (recv);
     }
     else
